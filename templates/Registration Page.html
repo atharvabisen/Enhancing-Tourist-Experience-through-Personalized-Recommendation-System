@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>User Registration</title>
+	<style>
+		body {
+			background-image: url("https://images.pexels.com/photos/210349/pexels-photo-210349.jpeg?auto=compress&cs=tinysrgb&w=600.jpg");
+			background-size: cover;
+			background-position: center;
+			background-attachment: fixed;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			background-color: rgb(206, 238, 232);
+			padding: 20px;
+			margin: auto;
+			width: 50%;
+			margin-top: 60px;
+			border: 1.5px solid #000000;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			font-weight: bold;
+			padding: 20px;
+		}
+
+		label {
+			margin-bottom: 5px;
+		}
+
+		input[type=text],
+		input[type=email],
+		input[type=password] {
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 3px;
+			border: 1px solid #CCC;
+			box-sizing: border-box;
+		}
+
+		.button-container {
+			text-align: center;
+		}
+
+		input[type="submit"] {
+			background-color: rgb(161, 237, 161);
+			color: black;
+			font-weight: bold;
+			font-size: 18px;
+			padding: 10px 20px;
+			border-radius: 5px;
+			margin-top: 5px;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: cyan;
+			color: black;
+			font-weight: bold;
+		}
+
+		p {
+			text-align: center;
+			margin-top: 20px;
+		}
+
+		.hero-banner {
+			backdrop-filter: blur(5px);
+			height: 40px;
+		}
+
+		.hero-banner h1 {
+			color: rgb(255, 243, 78);
+			font-size: 36px;
+			text-align: center;
+			text-shadow: 2px 2px #000;
+		}
+	</style>
+	<script>
+		const form = document.getElementById('registration-form');
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const username = document.getElementById('username').value;
+			const email = document.getElementById('email').value;
+			const password = document.getElementById('password').value;
+			const confirmPassword = document.getElementById('confirm-password').value;
+
+			if (password !== confirmPassword) {
+				alert('Passwords do not match');
+				return;
+			}
+
+			// Send registration data to server
+			// Code to send data to server goes here
+
+			alert('Registration successful!');
+		});
+	</script>
+</head>
+
+<body>
+	<header>
+		<div class="hero-banner">
+			<h1>Tourist Recommendation System</h1>
+		</div>
+	</header>
+	<div class="container">
+		<h1>User Registration</h1>
+		<form id="registration-form">
+			<label for="username">Username:</label>
+			<input type="text" id="username" name="username" required>
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required>
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" required>
+			<label for="confirm-password">Confirm Password:</label>
+			<input type="password" id="confirm-password" name="confirm-password" required>
+			<div class="button-container">
+				<input type="submit" value="Register">
+			</div>
+			<p>Already have an account? <a href="{{ url_for('register')}}">Login</a></p>
+		</form>
+	</div>
+</body>
+
+</html>

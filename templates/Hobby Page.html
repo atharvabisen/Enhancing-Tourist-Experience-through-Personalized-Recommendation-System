@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Discover Your Interest</title>
+	<style>
+		body {
+			background-image: url("https://images.pexels.com/photos/1005417/pexels-photo-1005417.jpeg?auto=compress&cs=tinysrgb&w=600.jpg");
+			background-size: cover;
+			background-position: bottom;
+			font-family: Arial, sans-serif;
+		}
+
+		.button-container {
+			text-align: center;
+			margin-top: 5px;
+		}
+
+		input[type="submit"] {
+			background-color: #ce1616;
+			color: white;
+			font-weight: bold;
+			font-size: 18px;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: cyan;
+			color: black;
+			font-weight: bold;
+		}
+
+		.container {
+			background-color: rgb(255, 253, 185);
+			padding: 20px;
+			margin: auto;
+			width: 50%;
+			border: 1.5px solid #000000;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		.container2 {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			border: 1.5px solid #000000;
+			padding: 20px;
+		}
+
+		label {
+			margin-bottom: 10px;
+		}
+
+		input[type=email],
+		input[type=password] {
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 3px;
+			border: 1px solid #CCC;
+			box-sizing: border-box;
+		}
+
+		select {
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 3px;
+			border: 1px solid #CCC;
+			box-sizing: border-box;
+			max-height: 200px;
+			font-style: italic;
+			overflow-y: auto;
+		}
+
+		p {
+			text-align: center;
+			margin-top: 20px;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+		}
+
+		.hero-banner {
+			backdrop-filter: blur(5px);
+			height: 60px;
+		}
+
+		.hero-banner h1 {
+			color: rgb(255, 243, 78);
+			font-size: 36px;
+			text-align: center;
+			text-shadow: 2px 2px #000;
+		}
+
+		.chip {
+			display: flex;
+			margin-right: 25px;
+			justify-content: center;
+			align-items: center;
+			width: 100px;
+			height: 50px;
+			border-radius: 25px;
+			background-color: #fff;
+			box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+			cursor: pointer;
+		}
+
+		.selected {
+			background-color: #0a91c6;
+			color: #fff;
+		}
+
+		.disabled {
+			background-color: #f5f5f5;
+			color: #ccc;
+			cursor: default;
+		}
+	</style>
+	<!-- <script src = "https://code.jquery.com/jquery-3.6.0.min.js"> -->
+	<script>
+		const form = document.getElementById('my-form');
+		form.addEventListener('click', (event) => {
+			event.preventDefault();
+			const mood = document.getElementById('mood').value;
+			const age = document.getElementById('age').value;
+			const qualification = document.getElementById('qualification').value;
+			const Gender = document.getElementById('gender').value;
+			const Hobby = document.getElementById('hobby').value;
+			const Budget = document.getElementById('budget').value;
+			const Climate = document.getElementById('climate').value;
+			const confirmPassword = document.getElementById('confirm-password').value;
+
+			if (password !== confirmPassword) {
+				alert('Passwords do not match');
+				return;
+			}
+
+			// Send registration data to server
+			// Code to send data to server goes here
+
+			alert('Registration successful!');
+		});
+	</script>
+</head>
+
+<body>
+	<header>
+		<div class="hero-banner">
+			<h1>Discover Your Interest</h1>
+		</div>
+	</header>
+	<div class="container">
+		<form id="my-form" action="/process_form" method="POST">
+			<label for="mood">Mood:</label>
+			<select id="mood" name="mood" required>
+				<option value="">Select the mood</option>
+				<option value="Happy" name="Happy">Happy</option>
+				<option value="Normal" name="Normal">Normal</option>
+				<option value="Sad" name="Sad">Sad</option>
+			</select>
+
+			<label for="age">Age:</label>
+			<select id="age" name="age" required>
+				<option value="">Select the age</option>
+				<option value="< 18" name="< 18"> &lt 18</option>
+				<option value="19 < and < 29" name="19 < and < 29">19&lt and &lt29</option>
+				<option value="30 < and < 55" name="30 < and < 55">30&lt and &lt55</option>
+				<option value="55 <" name="55 <">55&lt</option>
+			</select>
+
+			<label for="qualification">Qualification:</label>
+			<select id="qualification" name="qualification" required>
+				<option value="">Select the qualification</option>
+				<option value="Student" name="Student"> Student </option>
+				<option value="Graduated" name="Graduated"> Graduated</option>
+				<option value="Post Graduated" name="Post Graduated">Post Graduated</option>
+			</select>
+
+			<label for="gender">Gender:</label>
+			<select id="gender" name="gender" required>
+				<option value="">Select the gender</option>
+				<option value="Male" name="Male">Male</option>
+				<option value="Female" name="Female">Female</option>
+			</select>
+
+			<label for="hobby">Hobby:</label>
+			<select id="hobby" name="hobby" required>
+				<option value="">Select the Hobby</option>
+				<option value="H1" name="H1">  (Photography, history buff, genealogy, collecting antiques and
+					artifacts, visiting historical landmarks)</option>
+				<option value="H2" name="H2">  (Meditation, prayer, yoga, attending religious services, reading
+					religious texts, volunteer work for religious causes)</option>
+				<option value="H3" name="H3">  (Photography, hiking, camping, birdwatching, nature conservation,
+					wildlife rescue and rehabilitation)</option>
+				<option value="H4" name="H4">  (Hiking, rock climbing, white water rafting, bungee jumping, skydiving,
+					scuba diving, zip lining, exploring new cultures)</option>
+				<option value="H5" name="H5">  (Fashion and style, home decor and interior design, food and cooking,
+					technology and gadgets, collectibles and memorabilia, leisure and entertainment)</option>
+			</select>
+
+			<label for="budget">Budget:</label>
+			<select id="budget" name="budget" required>
+				<option value="">Select the Budget</option>
+				<option value="High" name="High">High</option>
+				<option value="Medium" name="Medium">Medium</option>
+				<option value="Low" name="Low">Low</option>
+			</select>
+
+			<label for="climate">Climate:</label>
+			<select id="climate" name="climate" required>
+				<option value="">Select the climate</option>
+				<option value="Rainy" name="Rainy">Rainy</option>
+				<option value="Warm" name="Warm">Warm</option>
+				<option value="Cold" name="Cold">Cold</option>
+			</select>
+
+			<label for="location">Enter your current location:</label>
+			<input type="text" id="current location" name="current location" required><br>
+
+			<label for="Area Of Interest">Enter the your Area of Interest (Choose 1 or 2)</label>
+			<div class="container2">
+				<div class="chip" data-id="Historical">Historical</div>
+				<div class="chip" data-id="Religious">Religious</div>
+				<div class="chip" data-id="Wildlife">Wildlife</div>
+				<div class="chip" data-id="Adventure">Adventure</div>
+				<div class="chip" data-id="Shopping">Shopping</div>
+			</div>
+			<br>
+			<div class="button-container">
+				<input type="hidden" id="area_of_interest" name="area_of_interest">
+				<input type="submit" id="submit-button" value="Result">
+			</div>
+			<!-- <button type="submit" id="submit-button">Result</button> -->
+		</form>
+		<script>
+			const chips = document.querySelectorAll('.chip');
+			let selectedChips = [];
+
+			function handleChipClick() {
+				const chip = this;
+				if (chip.classList.contains('disabled')) {
+					return;
+				}
+
+				if (chip.classList.contains('selected')) {
+					chip.classList.remove('selected');
+					selectedChips = selectedChips.filter(selectedChip => selectedChip.id !== chip.id);
+				} else {
+					if (selectedChips.length >= 2) {
+						return;
+					}
+					chip.classList.add('selected');
+					selectedChips.push(chip.dataset.id);
+				}
+
+				document.querySelector('#area_of_interest').value = selectedChips.join(',');
+
+				if (selectedChips.length === 2) {
+					chips.forEach(chip => {
+						if (!selectedChips.includes(chip)) {
+							chip.classList.add('disabled');
+						}
+					});
+				} else {
+					chips.forEach(chip => {
+						chip.classList.remove('disabled');
+					});
+				}
+			}
+
+			chips.forEach(chip => {
+				chip.addEventListener('click', handleChipClick);
+			});
+		</script>
+	</div>
+</body>
+
+</html>

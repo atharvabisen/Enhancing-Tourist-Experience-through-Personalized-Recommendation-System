@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Result</title>
+	<style>
+		body {
+			background-color: rgb(210, 204, 204);
+			background-image: url("https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg");
+			background-size: cover;
+			backdrop-filter: blur(4px);
+			background-attachment: fixed;
+		}
+		
+		#map {
+			width: 85%;
+			height: 550px;
+			border: none;
+			padding: 0;
+			margin: 0 auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			border: 1.5px solid black;
+		}
+		
+		#map-img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+			user-select: none;
+			-moz-user-select: none;
+			-webkit-user-drag: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+
+		.zoom-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			z-index: 1;
+			padding: 10px;
+			background-color: rgb(196, 185, 185);
+			border-radius: 5px;
+			font-weight: bold;
+			border: 1.5px solid black;
+			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+			cursor: pointer;
+		}
+
+		.zoom-in {
+			top: 60px;
+		}
+
+		.zoom-out {
+			top: 110px;
+		}
+
+		.btn {
+  			text-align: center;
+			color:black;
+			margin-top: 50px;
+		}
+
+		a {
+		padding: 10px 20px;
+		border: none;
+		background-color: #ccc;
+		color: black;
+		font-weight: bold;
+		text-decoration: none;
+		}
+
+		a:hover {
+			background-color: cyan;
+			color: white;
+			font-weight: bold;
+			}
+
+		.t {
+			margin-top: 20px;
+		}
+
+		table {
+			width: 60%;
+			border: 2px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 0 10px #ccc;
+			margin: 0 auto;
+			border-collapse: collapse;
+		}
+
+		th,
+		td {
+			padding: 10px;
+			text-align: center;
+		}
+
+		th {
+			color: white;
+			background-color: black;
+			font-size: 25px;
+		}
+
+		tr{
+			font-weight: bold;
+			font-family: 'Comic Sans MS';
+		}
+		tr:nth-child(odd) {
+			color: white;
+			background-color: #ff4949;
+		}
+		tr:nth-child(even) {
+			background-color: #fffb79;
+		}
+
+		tr:hover {
+			color: black;
+			background-color: #11dfd8;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div><h1 style="font-family:'Rockwell';text-align: center;">Order to visit the Places !</h1>
+		<div class="t">
+			<table>
+			  <thead>
+				<tr>
+				  <th>ID</th>
+				  <th>Place</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				{% for item in places %}
+				  <tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ item }}</td>
+				  </tr>
+				{% endfor %}
+			  </tbody>
+			</table>
+		  </div>
+		</div>
+		<div class="btn">
+			<!-- <button onclick="window.location.href='{{url}}'">Open in Google Maps</button> -->
+			<a href="{{url}}" target="_blank">Open in Google Maps</a>
+		</div>
+	<script>
+		var zoomLevel = 1;
+		var dragX = 0;
+		var dragY = 0;
+		var isDragging = false;
+	
+		function zoomIn() {
+			if (zoomLevel < 4) {
+				zoomLevel++;
+				document.getElementById('map-img').style.transform = 'scale(' + (1.2 ** zoomLevel) + ')';
+			}
+		}
+	
+		function zoomOut() {
+			if (zoomLevel > 1) {
+				zoomLevel--;
+				document.getElementById('map-img').style.transform = 'scale(' + (1.2 ** zoomLevel) + ')';
+			}
+		}
+	
+		function startDrag(e) {
+			isDragging = true;
+			dragX = e.clientX;
+			dragY = e.clientY;
+		}
+	
+		function drag(e) {
+			if (isDragging) {
+				var img = document.getElementById('map-img');
+				var offsetX = e.clientX - dragX;
+				var offsetY = e.clientY - dragY;
+				var left = parseInt(img.style.left) || 0;
+				var top = parseInt(img.style.top) || 0;
+				img.style.left = (left + offsetX) + 'px';
+				img.style.top = (top + offsetY) + 'px';
+				dragX = e.clientX;
+				dragY = e.clientY;
+			}
+		}
+	
+		function stopDrag() {
+			isDragging = false;
+		}
+	</script>
+	
+</body>
+</html>	
